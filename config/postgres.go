@@ -14,13 +14,14 @@ func ConnectDB() (*sql.DB, error) {
 	if err := godotenv.Load(); err != nil {
 		log.Println("no .env found")
 	}
-	connStr := fmt.Sprintf(
-		"user=%s password=%s dbname=%s sslmode=%s",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_NAME"),
-		os.Getenv("DB_SSLMODE"),
-	)
+	// connStr := fmt.Sprintf(
+	// 	"user=%s password=%s dbname=%s sslmode=%s",
+	// 	os.Getenv("DB_USER"),
+	// 	os.Getenv("DB_PASSWORD"),
+	// 	os.Getenv("DB_NAME"),
+	// 	os.Getenv("DB_SSLMODE"),
+	// )
+	connStr := os.Getenv("DB_URL")
 	db, err := sql.Open("postgres", connStr)
 	if err != nil {
 		return nil, fmt.Errorf("error opnening the DB: %w", err)
