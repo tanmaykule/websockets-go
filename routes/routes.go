@@ -12,7 +12,7 @@ func RegisterRoutes(router *gin.Engine, handlers *handlers.Handler, repository *
 	manager := manager.NewManager(repository)
 
 	// (frontend)
-	router.Static("/static", "./static")
+	router.Static("/static", "static")
 	router.GET("/chat", ServeIndex)
 	router.GET("/register", ServeRegister)
 	router.GET("/login", ServeLogin)
